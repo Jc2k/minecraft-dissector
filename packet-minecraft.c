@@ -340,8 +340,12 @@ static void add_player_move_look_details( proto_tree *tree, tvbuff_t *tvb, packe
 }
 static void add_block_dig_details( proto_tree *tree, tvbuff_t *tvb, packet_info *pinfo, guint32 offset)
 {
-
+    proto_tree_add_item(tree, hf_mc_status, tvb, offset + 1, 1, FALSE);
+    proto_tree_add_item(tree, hf_mc_xint, tvb, offset + 2, 4, FALSE);
+    proto_tree_add_item(tree, hf_mc_ybyte, tvb, offset + 6, 1, FALSE);
+    proto_tree_add_item(tree, hf_mc_zint, tvb, offset + 7, 4, FALSE);
 }
+
 static void add_place_details( proto_tree *tree, tvbuff_t *tvb, packet_info *pinfo, guint32 offset)
 {
     proto_tree_add_item(tree, hf_mc_block_type, tvb, offset + 1, 2, FALSE);
